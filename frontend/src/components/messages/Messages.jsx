@@ -17,7 +17,9 @@ const Messages = () => {
 
   useEffect(() => {
     setTimeout(() => {
-      lastMessageRef.current.scrollIntoView({smooth:true})
+      if (lastMessageRef.current) {
+        lastMessageRef.current.scrollIntoView({ behavior: "smooth" });
+      }
     },100)
   },[messages])
   return (
