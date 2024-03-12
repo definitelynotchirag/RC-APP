@@ -8,8 +8,9 @@ import connectToMongoDB from "./db/connectToMongoDB.js";
 import authRoutes from "./routes/auth.routes.js";
 import messageRoutes from "./routes/message.routes.js";
 import userRoutes from "./routes/user.routes.js";
+import {app, server} from "./socket/socket.js";
 
-const app = express();
+// const app = express();
 const PORT = process.env.PORT || 5000;
 
 // require("dotenv").config();
@@ -29,7 +30,7 @@ app.use("/api/messages", messageRoutes);//add message routes
 
 app.use("/api/users", userRoutes);//add user routes
 
-app.listen(PORT, () => 
+server.listen(PORT, () => 
 {
     connectToMongoDB();
     console.log(`Server Running on Port ${PORT}`);

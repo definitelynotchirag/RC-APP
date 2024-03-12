@@ -13,7 +13,7 @@ const protectRoute = async (req, res, next) => {
     } //if token is not present
     
     const decoded = jwt.verify(token, `${process.env.JWT_SECRET_KEY}`); //decoded will contain the payload of the token
-    console.log(decoded);
+    // console.log(decoded);
 
     if (!decoded) {
       return res

@@ -1,26 +1,36 @@
 import React from "react";
 
-const GenderComponent = () => {
+const GenderComponent = ({onCheckboxChange, selectedGender}) => {
   return (
     <div className="flex ">
-      <div class="form-control">
-        <label class="label cursor-pointer">
-          <span class="text-base label-text p-2">Male</span>
+      <div className="form-control">
+        <label
+          className={`label cursor-pointer ${
+            selectedGender === "male" ? "selected" : ""
+          }`}
+        >
+          <span className="text-base label-text p-2">Male</span>
           <input
             type="checkbox"
             // checked="checked"
-            class="checkbox checkbox-primary"
+            className="checkbox checkbox-primary"
+            checked={selectedGender === "male"} //If the selected
+            onChange={() => onCheckboxChange("male")} //If the checkbox is checked, call the onCheckboxChange function with the value of the checkbox
           />
         </label>
       </div>
 
-      <div class="form-control">
-        <label class="label cursor-pointer ">
-          <span class="text-base label-text p-2 ">Female</span>
+      <div className="form-control">
+        <label className={`label cursor-pointer ${
+            selectedGender === "female" ? "selected" : ""
+          }`}>
+          <span className="text-base label-text p-2 ">Female</span>
           <input
             type="checkbox"
             // checked="checked"
-            class="checkbox checkbox-primary"
+            className="checkbox checkbox-primary"
+            checked={selectedGender === "female"}
+            onChange={() => onCheckboxChange("female")}
           />
         </label>
       </div>
