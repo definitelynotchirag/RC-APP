@@ -20,7 +20,7 @@ export const SocketContextProvider = ({ children }) => {
                     userId: authUser._id,
                 },
                 rejectUnauthorized: false,
-                transports: ['websocket', 'polling', 'flashsocket']
+                transports: [ 'polling', 'flashsocket']
             });
 
 
