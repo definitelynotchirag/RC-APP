@@ -19,7 +19,7 @@ const Login = () => {
       <div className="w-full p-6 rounded-lg shadow-md bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-10">
         <h1 className="text-3xl font-semibold text-center text-gray-300">
           Login
-          <span className="text-blue-500 ">ChatApp</span>
+          <span className="text-blue-500 "> ChatApp</span>
         </h1>
 
         <form onSubmit={handleSubmit}>
@@ -69,6 +69,11 @@ const Login = () => {
             <button className="btn btn-block nt-2 btn-active btn-ghost" disabled={loading}>
               {loading ? <span className="loading loading-spinner"></span> : "Login"}
             </button>
+            <small className="block text-xs text-gray-400 text-center mt-4 mb-1">
+          Test credentials:<br/>
+          user 1: <b>chirag58</b> pass: <b>123456</b><br/>
+          user 2: <b>chirag69</b> pass: <b>123456</b>
+        </small>
           </div>
         </form>
       </div>
