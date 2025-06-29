@@ -1,6 +1,12 @@
 import { Server } from "socket.io";
 import http from "http";
 import express from "express";
+import { createAdapter } from "@socket.io/redis-adapter";
+import Redis from "ioredis";
+
+
+import dotenv from "dotenv";
+dotenv.config();
 
 const app = express();
 
@@ -12,6 +18,20 @@ const io = new Server(server, {
   },
 });
 
+// Replace with your actual Redis Cloud URL
+const REDIS_CLOUD_URL = process.env.REDIS_CLOUD_URL || "redis://default:<password>@<host>:<port>";
+
+const pubClient = new Redis(REDIS_CLOUD_URL);
+const subClient = new Redis(REDIS_CLOUD_URL);
+
+pubClient.on("error", (err) => {
+  console.error("Redis Pub Client Error:", err);
+});
+subClient.on("error", (err) => {
+  console.error("Redis Sub Client Error:", err);
+});
+
+io.adapter(createAdapter(pubClient, subClient));
 
 export const getReceiverSocketId = (receiverId) => {
     return userSocketMap[receiverId];

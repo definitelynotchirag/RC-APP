@@ -11,13 +11,17 @@ import userRoutes from "./routes/user.routes.js";
 import {app, server} from "./socket/socket.js";
 
 // const app = express();
-const PORT = process.env.PORT || 5000;
+
+dotenv.config();
+
+
+const PORT = process.env.PORT || 3000;
 
 
 const __dirname = path.resolve();
 // require("dotenv").config();
 
-dotenv.config();
+
 
 app.use(cookieParser());
 
