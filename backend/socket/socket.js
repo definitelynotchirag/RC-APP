@@ -12,7 +12,10 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
     cors: {
-        origin: "https://localhost:5000",
+        origin: [
+            "https://localhost:5000",
+            "https://chatx.chiragx.me"
+        ],
         methods: ["GET", "POST"],
     },
 });
